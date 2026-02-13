@@ -1,0 +1,61 @@
+## 🛡️ Burp Suite – Description
+
+**Burp Suite** is a popular web application security testing tool used by security professionals and ethical hackers to find vulnerabilities in websites and web applications.
+
+It is developed by **PortSwigger** and is widely used for penetration testing.
+
+---
+
+## 🔎 What Burp Suite Does
+
+Burp Suite works as an **intercepting proxy** between your browser and the web server. It allows you to:
+
+* Capture and inspect HTTP/HTTPS traffic
+* Modify requests before they reach the server
+* Analyze responses
+* Test for security vulnerabilities
+
+---
+
+## 🧰 Main Features
+
+* **Proxy** – Intercepts and edits requests/responses
+* **Repeater** – Manually modify and resend requests
+* **Intruder** – Automated attack tool (brute force, fuzzing)
+* **Scanner** – Automatically finds vulnerabilities (Pro version)
+* **Decoder** – Encode/decode data (Base64, URL, etc.)
+* **Comparer** – Compare data differences
+
+---
+
+## 🎯 Common Uses
+
+* SQL Injection testing
+* Cross-Site Scripting (XSS) detection
+* Authentication testing
+* Session handling testing
+* API security testing
+
+---
+
+## 📦 Versions
+
+* **Community Edition** – Free, manual testing
+* **Professional Edition** – Paid, includes automated scanner
+* **Enterprise Edition** – Large-scale automated scanning
+
+---
+
+## 👨‍💻 Who Uses It?
+
+* Ethical hackers
+* Penetration testers
+* Security researchers
+* Web developers
+* Security teams
+
+---
+
+## ⚠️ Important
+
+Burp Suite should only be used for **legal security testing** on applications you own or have permission to test.
