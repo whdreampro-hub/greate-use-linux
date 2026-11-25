@@ -1206,7 +1206,7 @@ sudo -u postgres psql -d rtbell -c "\conninfo"
 sudo systemctl status postgresql
 
 # Verify credentials in .env
-cat /opt/rtbell/backend/.env.production | grep DATABASE
+if grep -q '^DATABASE_URL=' /opt/rtbell/backend/.env.production; then echo 'DATABASE_URL is configured'; else echo 'DATABASE_URL is missing'; fi
 ```
 
 #### 4. WebSocket Connection Failed
@@ -1323,6 +1323,8 @@ journalctl -u rtbell-backend --since "10 minutes ago" | grep -i error | tail -5
 ```
 
 ## Security
+
+**Important:** This guide contains example configuration values only. Replace every placeholder with a unique secret before deployment. Never commit real `.env` files, passwords, tokens, private keys, or production connection strings. Restrict access to backups because they may contain sensitive configuration. Do not reuse example credentials in a live environment.
 
 ### SSL Configuration
 
