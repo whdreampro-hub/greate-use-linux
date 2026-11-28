@@ -306,7 +306,7 @@ const { PrismaClient } = require('@prisma/client');
 const redis = require('redis');
 const dayjs = require('dayjs');
 const isoWeek = require('dayjs/plugin/isoWeek');
-const { exec } = require('child_process');
+const { execFile } = require('child_process');
 const path = require('path');
 
 dayjs.extend(isoWeek);
@@ -339,8 +339,14 @@ async function ringBell(schedule, type = 'SCHEDULED') {
     console.log(`🔔 Ringing bell: ${schedule.name} at ${new Date().toISOString()}`);
     
     // Play sound using system audio
-    const soundPath = schedule.sound || '/opt/rtbell/sounds/default.mp3';
-    exec(`mpg123 "${soundPath}"`, (error, stdout, stderr) => {
+    const soundRoot = path.resolve('/opt/rtbell/sounds');
+    const soundPath = path.resolve(soundRoot, schedule.sound || 'default.mp3');
+    if (!soundPath.startsWith(`${soundRoot}${path.sep}`)) {
+      throw new Error('Invalid bell sound path');
+    }
+
+    // execFile passes the sound path as one argument without invoking a shell.
+    execFile('mpg123', [soundPath], (error, stdout, stderr) => {
       if (error) {
         console.error(`Error playing sound: ${error.message}`);
         return;
